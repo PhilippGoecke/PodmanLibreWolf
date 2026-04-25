@@ -10,10 +10,14 @@ RUN apt update && apt upgrade -y \
 
 WORKDIR /build
 
-RUN git clone https://gitlab.com/librewolf-community/browser/source.git librewolf
+RUN git clone --recursive https://codeberg.org/librewolf/source.git librewolf
 
 WORKDIR /build/librewolf
 
-RUN chmod +x ./mach && ./mach build
+RUN make dir \
+  && make bootstrap \
+  && make build \
+  && make package
+  # make run
 
 CMD ["/bin/bash"]
