@@ -4,7 +4,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 
 # install dependencies
 RUN apt update && apt upgrade -y \
-  && apt install -y --no-install-recommends --no-install-suggests ca-certificates git wget \
+  && apt install -y --no-install-recommends --no-install-suggests ca-certificates git wget gpg \
   && apt install -y --no-install-recommends --no-install-suggests build-essential python3 python3-dev cargo rustc cbindgen nasm yasm libgtk-3-dev libdbus-1-dev libssl-dev libpulse-dev \
   && rm -rf "/var/lib/apt/lists/*" \
   && rm -rf /var/cache/apt/archives
