@@ -9,6 +9,7 @@ RUN apt update && apt upgrade -y \
   && rm -rf "/var/lib/apt/lists/*" \
   && rm -rf /var/cache/apt/archives
 
+USER librewolf
 WORKDIR /build
 
 RUN git clone --recursive https://codeberg.org/librewolf/source.git librewolf
