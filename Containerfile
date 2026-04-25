@@ -9,7 +9,11 @@ RUN apt update && apt upgrade -y \
   && rm -rf "/var/lib/apt/lists/*" \
   && rm -rf /var/cache/apt/archives
 
-USER librewolf
+# add user and set home directory
+ARG USER=librewolf
+RUN useradd --create-home --shell /bin/bash $USER
+USER $USER
+
 WORKDIR /build
 
 RUN git clone --recursive https://codeberg.org/librewolf/source.git librewolf
